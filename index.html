@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Amazon-style Product Page — HTML only</title>
+  <style>
+    /* Simple, self-contained styling (kept inside the HTML file) */
+    :root{--yellow:#F0C14B;--dark:#111;--muted:#666}
+    body{font-family:system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; margin:0;background:#f6f7f8;color:var(--dark)}
+    .topbar{background:#131921;color:#fff;padding:12px 18px;display:flex;align-items:center;gap:12px}
+    .logo{font-weight:800;color:var(--yellow);font-size:22px}
+    .search{flex:1;display:flex;gap:6px}
+    .search input{flex:1;padding:10px;border:0;border-radius:4px 0 0 4px}
+    .search button{background:var(--yellow);border:0;padding:10px 14px;border-radius:0 4px 4px 0;cursor:pointer}
+    .nav-actions{display:flex;gap:12px;align-items:center}
+    .container{max-width:1200px;margin:18px auto;padding:0 16px}
+
+    .layout{display:grid;grid-template-columns:220px 1fr;gap:18px}
+    @media (max-width:800px){.layout{grid-template-columns:1fr}.left{order:2}}
+
+    .left{background:#fff;padding:14px;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .left h3{margin:0 0 10px 0;font-size:15px}
+    .category{display:flex;flex-direction:column;gap:6px}
+    .category button{background:transparent;border:0;text-align:left;padding:8px;border-radius:4px;cursor:pointer}
+    .category button.active{background:#fff3d7}
+
+    .results{background:#fff;padding:14px;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+    .card{background:#fff;border:1px solid #e6e6e6;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+    .thumb{height:180px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f2,#e8eef5);color:var(--muted);font-weight:700}
+    .info{padding:12px;flex:1;display:flex;flex-direction:column}
+    .title{font-size:14px;margin:0 0 8px 0;flex:1}
+    .price{font-weight:700;margin-bottom:6px}
+    .rating{font-size:13px;color:#b46900;margin-bottom:8px}
+    .actions{display:flex;gap:8px}
+    .btn{padding:8px 10px;border-radius:4px;border:1px solid #ccc;background:#fff;cursor:pointer}
+    .btn.primary{background:var(--yellow);border-color:var(--yellow);}
+
+    .pagination{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+
+    /* product detail block (non-interactive) */
+    .detail{margin-top:16px;background:#fff;padding:14px;border-radius:6px}
+    .detail .row{display:flex;gap:14px}
+    .detail .thumb-large{width:260px;height:260px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f2,#e8eef5);font-weight:700;color:var(--muted)}
+    .detail .meta{flex:1}
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">My<span style="color:#fff">mazon</span></div>
+    <div class="search">
+      <input aria-label="search" placeholder="Search products, categories, brands" />
+      <button aria-label="search-button">Search</button>
+    </div>
+    <div class="nav-actions">
+      <div class="small">Hello, Sign in</div>
+      <div
